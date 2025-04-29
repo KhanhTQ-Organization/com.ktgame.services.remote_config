@@ -1,0 +1,19 @@
+{
+    "name": "com.ktgame.services.remote_config",
+    "rootNamespace": "",
+    "references": [
+        "GUID:ea2ae37156ab74bd0b7bf06641413d82",
+        "GUID:97f3a3e1622e296488025ed1381dd511",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:834b6e1286573ea49a0fd7dbed2d0325"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

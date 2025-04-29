@@ -1,0 +1,5 @@
+<linker>
+    <assembly fullname="com.ktgame.services.remote_config" ignoreIfMissing="1">
+        <namespace fullname="com.ktgame.services.remote_config" preserve="all"/>
+    </assembly>
+</linker>

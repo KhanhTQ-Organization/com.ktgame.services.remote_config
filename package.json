@@ -1,0 +1,16 @@
+{
+  "name": "com.ktgame.services.remote_config",
+  "version": "1.0.0",
+  "displayName": "com.ktgame.services.remote_config",
+  "description": "Fire base services",
+  "author": {
+    "name": "ktgame",
+    "email": "khanhquang0912qh@gmail.com",
+    "url": ""
+  },
+  "dependencies": {
+    "com.ktgame.core": "1.0.6",
+    "com.ktgame.config.core": "1.0.3",
+    "com.ktgame.unitask": "1.0.1"
+  }
+}

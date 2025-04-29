@@ -1,0 +1,19 @@
+{
+    "name": "com.ktgame.services.remote_config.editor",
+    "rootNamespace": "com.ktgame.services.remote_config.editor",
+    "references": [
+        "GUID:b0663801fa59ad740824780897cddd0f",
+        "GUID:ea2ae37156ab74bd0b7bf06641413d82"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
