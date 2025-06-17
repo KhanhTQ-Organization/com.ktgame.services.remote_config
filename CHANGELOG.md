@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/KhanhTQ-hub/com.ktgame.services.remote_config/compare/v1.0.2...v1.0.3) (2025-06-17)
+
+
+### Bug Fixes
+
+* check null firebase ([3842a4d](https://github.com/KhanhTQ-hub/com.ktgame.services.remote_config/commit/3842a4d2c795bcef2ccce17b4bd9ff0c7b5c9bdb))
+
 ## [1.0.2](https://github.com/KhanhTQ-hub/com.ktgame.services.remote_config/compare/v1.0.1...v1.0.2) (2025-06-17)
 
 
