@@ -2,6 +2,8 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using com.ktgame.config.core;
+using UnityEngine;
+
 #if FIREBASE
 using Firebase.Extensions;
 using Firebase.RemoteConfig;
@@ -51,23 +53,35 @@ namespace com.ktgame.services.remote_config.provider
 
         private async void FetchCompleteHandler(Task fetchTask)
         {
-            var info = FirebaseRemoteConfig.DefaultInstance.Info;
-            switch (info.LastFetchStatus)
+            ConfigInfo info = null;
+            try
             {
-                case LastFetchStatus.Success:
-                    await FirebaseRemoteConfig.DefaultInstance.ActivateAsync();
-                    UpdateDefaultConfigs();
-                    OnFetchSuccess?.Invoke();
-                    break;
-                case LastFetchStatus.Failure:
-                    OnFetchError?.Invoke();
-                    break;
-                case LastFetchStatus.Pending:
-                    OnFetchError?.Invoke();
-                    break;
-                default:
-                    OnFetchError?.Invoke();
-                    break;
+                info = FirebaseRemoteConfig.DefaultInstance.Info;
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                Debug.LogWarning("RemoteConfig.Info threw exception: " + ex);
+            }
+
+            if (info != null)
+            {
+                switch (info.LastFetchStatus)
+                {
+                    case LastFetchStatus.Success:
+                        await FirebaseRemoteConfig.DefaultInstance.ActivateAsync();
+                        UpdateDefaultConfigs();
+                        OnFetchSuccess?.Invoke();
+                        break;
+                    case LastFetchStatus.Failure:
+                        OnFetchError?.Invoke();
+                        break;
+                    case LastFetchStatus.Pending:
+                        OnFetchError?.Invoke();
+                        break;
+                    default:
+                        OnFetchError?.Invoke();
+                        break;
+                }
             }
         }
 
