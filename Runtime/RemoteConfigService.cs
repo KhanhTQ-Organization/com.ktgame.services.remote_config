@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace com.ktgame.services.remote_config
 {
-	[Service(typeof(RemoteConfigService))]
+	[Service(typeof(IRemoteConfigService))]
 	public class RemoteConfigService : MonoBehaviour, IRemoteConfigService
 	{
 		public int Priority { get; }
