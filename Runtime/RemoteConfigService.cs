@@ -2,7 +2,11 @@ using System;
 using com.ktgame.config.core;
 using com.ktgame.core;
 using com.ktgame.services.firebase;
+
+#if FIREBASE_REMOTE_CONFIG
 using com.ktgame.services.remote_config.provider;
+#endif
+
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 

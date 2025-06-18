@@ -11,7 +11,7 @@ namespace com.ktgame.services.remote_config.editor
 
         public void OnPreprocessBuild(BuildReport report)
         {
-            AddScriptingDefineSymbol("FIREBASE_REMOTE_CONFIG");
+            //AddScriptingDefineSymbol("FIREBASE_REMOTE_CONFIG");
         }
 
         private static void AddScriptingDefineSymbol(string define)

@@ -4,14 +4,13 @@ using System.Threading.Tasks;
 using com.ktgame.config.core;
 using UnityEngine;
 
-#if FIREBASE
+#if FIREBASE_REMOTE_CONFIG
+
 using Firebase.Extensions;
 using Firebase.RemoteConfig;
-#endif
 
 namespace com.ktgame.services.remote_config.provider
 {
-#if FIREBASE_REMOTE_CONFIG
     public class FirebaseConfigProvider : IConfigProvider
     {
         public event Action OnFetchSuccess;
@@ -110,5 +109,5 @@ namespace com.ktgame.services.remote_config.provider
             _cache.Cache(_defaultConfig);
         }
     }
-#endif
 }
+#endif
