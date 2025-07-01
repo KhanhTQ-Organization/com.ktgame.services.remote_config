@@ -15,7 +15,7 @@ namespace com.ktgame.services.remote_config
 	[Service(typeof(IRemoteConfigService))]
 	public class RemoteConfigService : MonoBehaviour, IRemoteConfigService
 	{
-		public int Priority { get; }
+		public int Priority => 1;
 		public bool Initialized { get; set; }
 
 		public event Action OnFetchSuccess;
