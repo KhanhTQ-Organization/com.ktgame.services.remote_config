@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/KhanhTQ-hub/com.ktgame.services.remote_config/compare/v1.0.4...v1.0.5) (2025-07-01)
+
+
+### Bug Fixes
+
+* priority ([8515b0c](https://github.com/KhanhTQ-hub/com.ktgame.services.remote_config/commit/8515b0c7d0b035ff11a2528b56d32cdc316c7c60))
+
 ## [1.0.4](https://github.com/KhanhTQ-hub/com.ktgame.services.remote_config/compare/v1.0.3...v1.0.4) (2025-06-18)
 
 
