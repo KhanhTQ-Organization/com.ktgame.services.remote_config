@@ -46,8 +46,6 @@ namespace com.ktgame.services.remote_config
 						ConfigBlueprint.SetBool(configData.Name, bool.Parse(configData.DefaultValue));
 						break;
 				}
-
-				break;
 			}
 
 #if FIREBASE_REMOTE_CONFIG
