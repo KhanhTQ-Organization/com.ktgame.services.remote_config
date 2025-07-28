@@ -1,3 +1,10 @@
+## [1.0.7](https://github.com/KhanhTQ-Organization/com.ktgame.services.remote_config/compare/v1.0.6...v1.0.7) (2025-07-28)
+
+
+### Bug Fixes
+
+* update remoteconfig ([3359e17](https://github.com/KhanhTQ-Organization/com.ktgame.services.remote_config/commit/3359e17638e898c3d8c7a3ab473da3e3750155d0))
+
 ## [1.0.6](https://github.com/KhanhTQ-Organization/com.ktgame.services.remote_config/compare/v1.0.5...v1.0.6) (2025-07-04)
 
 
