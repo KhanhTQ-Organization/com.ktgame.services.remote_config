@@ -24,6 +24,7 @@ namespace com.ktgame.services.remote_config
 		public IConfigProvider ConfigProvider { get; private set; }
 
 		private RemoteConfigServiceSettings _settings;
+		public bool IsFetchSuccess { get; private set; }
 
 		public async UniTask OnInitialize(IArchitecture architecture)
 		{
@@ -49,17 +50,33 @@ namespace com.ktgame.services.remote_config
 			}
 
 #if FIREBASE_REMOTE_CONFIG
-			var firebaseService = architecture.GetService<IFirebaseService>();
-			await UniTask.WaitUntil(() => firebaseService.Initialized);
-			ConfigProvider = new FirebaseConfigProvider(new ConfigPlayerPrefCache());
-			ConfigProvider.OnFetchSuccess += () => OnFetchSuccess?.Invoke();
-			ConfigProvider.OnFetchError += () => OnFetchError?.Invoke();
-			ConfigProvider.OnSetDefaultComplete += OnSetDefaultComplete;
-			ConfigProvider.SetDefaultValues(ConfigBlueprint);
+            var firebaseService = architecture.GetService<IFirebaseService>();
+            await UniTask.WaitUntil(() => firebaseService.Initialized);
+            ConfigProvider = new FirebaseConfigProvider(new ConfigPlayerPrefCache());
+            ConfigProvider.OnFetchSuccess += () =>
+            {
+                IsFetchSuccess = true;
+                OnFetchSuccess?.Invoke();
+            };
+            ConfigProvider.OnFetchError += () =>
+            {
+                IsFetchSuccess = false;
+                OnFetchError?.Invoke();
+            };
+            ConfigProvider.OnSetDefaultComplete += OnSetDefaultComplete;
+            ConfigProvider.SetDefaultValues(ConfigBlueprint);
 #else
 			ConfigProvider = new NullConfigProvider();
-			ConfigProvider.OnFetchSuccess += OnFetchSuccess;
-			ConfigProvider.OnFetchError += OnFetchError;
+			ConfigProvider.OnFetchSuccess += () =>
+			{
+				IsFetchSuccess = true;
+				OnFetchSuccess?.Invoke();
+			};
+			ConfigProvider.OnFetchError += () =>
+			{
+				IsFetchSuccess = false;
+				OnFetchError?.Invoke();
+			};
 			ConfigProvider.OnSetDefaultComplete += OnSetDefaultComplete;
 			ConfigProvider.SetDefaultValues(ConfigBlueprint);
 #endif
@@ -67,6 +84,7 @@ namespace com.ktgame.services.remote_config
 
 		public void Fetch()
 		{
+			IsFetchSuccess = false;
 			ConfigProvider.Fetch();
 		}
 

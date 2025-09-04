@@ -6,6 +6,7 @@ namespace com.ktgame.services.remote_config
 {
 	public interface IRemoteConfigService : IService, IInitializable
 	{
+		bool IsFetchSuccess { get; }
 		event Action OnFetchSuccess;
 
 		event Action OnFetchError;
