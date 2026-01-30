@@ -1,3 +1,10 @@
+## [1.0.9](https://github.com/KhanhTQ-Organization/com.ktgame.services.remote_config/compare/v1.0.8...v1.0.9) (2026-01-30)
+
+
+### Bug Fixes
+
+* big update UIWindow ([f35cb5c](https://github.com/KhanhTQ-Organization/com.ktgame.services.remote_config/commit/f35cb5cea631f95b2d97270278431819c4067d2c))
+
 ## [1.0.8](https://github.com/KhanhTQ-Organization/com.ktgame.services.remote_config/compare/v1.0.7...v1.0.8) (2025-09-04)
 
 
