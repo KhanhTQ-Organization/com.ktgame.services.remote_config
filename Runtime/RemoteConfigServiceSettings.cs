@@ -32,11 +32,23 @@ namespace com.ktgame.services.remote_config
         [SerializeField] [FoldoutGroup("$name", expanded: false)]
         private string defaultValue;
 
-        public string Name => name;
+        public string Name
+        {
+            get => name;
+            set => name = value;
+        }
 
-        public ValueType Type => type;
+        public ValueType Type
+        {
+            get => type;
+            set => type = value;
+        }
 
-        public string DefaultValue => defaultValue;
+        public string DefaultValue
+        {
+            get => defaultValue;
+            set => defaultValue = value;
+        }
     }
 
     public class RemoteConfigServiceSettings : ServiceSettingsSingleton<RemoteConfigServiceSettings>
@@ -49,7 +61,11 @@ namespace com.ktgame.services.remote_config
 
         public bool AutoFetching => autoFetching;
 
-        public List<ConfigData> Configs => configs ?? new List<ConfigData>();
+        public List<ConfigData> Configs
+        {
+            get => configs ?? new List<ConfigData>();
+            set => configs = value;
+        }
 
 #if UNITY_EDITOR
         [Button("Generate Config")]
