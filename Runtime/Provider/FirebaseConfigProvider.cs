@@ -17,12 +17,10 @@ namespace com.ktgame.services.remote_config.provider
         public event Action OnFetchError;
         public event Action OnSetDefaultComplete;
 
-        private readonly IConfigCache _cache;
         private IConfigBlueprint _defaultConfig;
 
-        public FirebaseConfigProvider(IConfigCache cache)
+        public FirebaseConfigProvider()
         {
-            _cache = cache;
         }
 
         public IConfigValue GetValue(string id)
@@ -32,7 +30,6 @@ namespace com.ktgame.services.remote_config.provider
 
         public void SetDefaultValues(IConfigBlueprint config)
         {
-            _cache.Load(config);
             _defaultConfig = config;
             FirebaseRemoteConfig.DefaultInstance.SetDefaultsAsync(config.Export()).ContinueWithOnMainThread(SetDefaultCompleteHandler);
         }
@@ -105,8 +102,6 @@ namespace com.ktgame.services.remote_config.provider
             {
                 _defaultConfig.SetBool(key, GetValue(key).Boolean);
             }
-
-            _cache.Cache(_defaultConfig);
         }
     }
 }

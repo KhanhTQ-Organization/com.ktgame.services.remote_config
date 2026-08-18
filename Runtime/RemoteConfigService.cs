@@ -35,16 +35,34 @@ namespace com.ktgame.services.remote_config
 				switch (configData.Type)
 				{
 					case ValueType.Int:
-						ConfigBlueprint.SetInt(configData.Name, int.Parse(configData.DefaultValue));
+						if (int.TryParse(configData.DefaultValue, out int intVal))
+							ConfigBlueprint.SetInt(configData.Name, intVal);
+						else
+						{
+							Debug.LogWarning($"[RemoteConfig] Invalid Int DefaultValue for '{configData.Name}'. Falling back to 0.");
+							ConfigBlueprint.SetInt(configData.Name, 0);
+						}
 						break;
 					case ValueType.Float:
-						ConfigBlueprint.SetFloat(configData.Name, float.Parse(configData.DefaultValue));
+						if (float.TryParse(configData.DefaultValue, out float floatVal))
+							ConfigBlueprint.SetFloat(configData.Name, floatVal);
+						else
+						{
+							Debug.LogWarning($"[RemoteConfig] Invalid Float DefaultValue for '{configData.Name}'. Falling back to 0f.");
+							ConfigBlueprint.SetFloat(configData.Name, 0f);
+						}
 						break;
 					case ValueType.String:
-						ConfigBlueprint.SetString(configData.Name, configData.DefaultValue);
+						ConfigBlueprint.SetString(configData.Name, configData.DefaultValue ?? "");
 						break;
 					case ValueType.Boolean:
-						ConfigBlueprint.SetBool(configData.Name, bool.Parse(configData.DefaultValue));
+						if (bool.TryParse(configData.DefaultValue, out bool boolVal))
+							ConfigBlueprint.SetBool(configData.Name, boolVal);
+						else
+						{
+							Debug.LogWarning($"[RemoteConfig] Invalid Boolean DefaultValue for '{configData.Name}'. Falling back to false.");
+							ConfigBlueprint.SetBool(configData.Name, false);
+						}
 						break;
 				}
 			}
@@ -52,7 +70,7 @@ namespace com.ktgame.services.remote_config
 #if FIREBASE_REMOTE_CONFIG
             var firebaseService = architecture.GetService<IFirebaseService>();
             await UniTask.WaitUntil(() => firebaseService.Initialized);
-            ConfigProvider = new FirebaseConfigProvider(new ConfigPlayerPrefCache());
+            ConfigProvider = new FirebaseConfigProvider();
             ConfigProvider.OnFetchSuccess += () =>
             {
                 IsFetchSuccess = true;
